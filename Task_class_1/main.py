@@ -18,12 +18,8 @@ def listComprehension():
         axisZ = int(input())
         print('Insert a number to avoid in the Axes sum')
         sumFilter = int(input())
-        ListOfNumbers = []
-        for x in range(axisX+1):
-            for y in range(axisY+1):
-                for z in range(axisZ+1):
-                    if (x+y+z) != sumFilter:
-                        ListOfNumbers.append([x, y, z])
+        ListOfNumbers = [[x, y, z] for x in range(axisX+1) for y in range(axisY+1) for z in range(axisZ+1) if
+                         sumFilter != (x + y + z)]
         print(ListOfNumbers)
     except ValueError:
         print('Please insert valid integer values.')
@@ -32,14 +28,14 @@ def listComprehension():
 def runnerAppScore():
     print('Type a qty of scores to insert [Between 2-10]')
     try:
+        myflag = False
         n = int(input())
         if 2 <= n <= 10:
             print(f'Insert {n} scores [limit: -100, 100] as integer values separated by Spaces: ')
             try:
                 scores = list(map(int, input().split()))
-                if len(scores) > n:
+                if len(scores) != n:
                     print(f'Please insert only {n} scores separated by Spaces in the next attempt.')
-                    myflag = False
                 else:
                     for i in scores:
                         if -100 <= i <= 100:
