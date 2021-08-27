@@ -8,27 +8,27 @@ def loops():
         print('Please enter a valid integer number')
 
 
-def listComprehension():
+def list_comprehension():
     try:
         print('Insert a number for the X Axis: ')
-        axisX = int(input())
+        axis_x = int(input())
         print('Insert a number for the Y Axis: ')
-        axisY = int(input())
+        axis_y = int(input())
         print('Insert a number for the Z Axis: ')
-        axisZ = int(input())
+        axis_z = int(input())
         print('Insert a number to avoid in the Axes sum')
-        sumFilter = int(input())
-        ListOfNumbers = [[x, y, z] for x in range(axisX+1) for y in range(axisY+1) for z in range(axisZ+1) if
-                         sumFilter != (x + y + z)]
-        print(ListOfNumbers)
+        sum_filter = int(input())
+        list_of_numbers = [[x, y, z] for x in range(axis_x + 1) for y in range(axis_y + 1) for z in range(axis_z + 1) if
+                           sum_filter != (x + y + z)]
+        print(list_of_numbers)
     except ValueError:
         print('Please insert valid integer values.')
 
 
-def runnerAppScore():
+def runner_app_score():
     print('Type a qty of scores to insert [Between 2-10]')
     try:
-        myflag = False
+        my_flag = False
         n = int(input())
         if 2 <= n <= 10:
             print(f'Insert {n} scores [limit: -100, 100] as integer values separated by Spaces: ')
@@ -39,11 +39,11 @@ def runnerAppScore():
                 else:
                     for i in scores:
                         if -100 <= i <= 100:
-                            myflag = True
+                            my_flag = True
                         else:
-                            myflag = False
+                            my_flag = False
                             break
-                if myflag is True:
+                if my_flag is True:
                     aux = sorted(set(scores), reverse=True)
                     print(f'The Runner-up score is: {aux[1]}')
                 else:
@@ -56,10 +56,27 @@ def runnerAppScore():
         print('Please insert a valid integer value in the next attempt.')
 
 
+def print_word():
+    print('Type a qty of words to insert.')
+    n = int(input())
+    dictionary = dict()
+    for i in range(n):
+        word = input().strip()
+        if word in dictionary:
+            dictionary[word] += 1
+        else:
+            dictionary[word] = 1
+
+    result = [str(i) for i in dictionary.values()]
+    print(f'{len(dictionary)}\n', result)
+
+
 if __name__ == '__main__':
     print('######################## TASK 1 ######################')
     loops()
     print('######################## TASK 2 ######################')
-    listComprehension()
+    list_comprehension()
     print('######################## TASK 3 ######################')
-    runnerAppScore()
+    runner_app_score()
+    print('######################## TASK 4 ######################')
+    print_word()
