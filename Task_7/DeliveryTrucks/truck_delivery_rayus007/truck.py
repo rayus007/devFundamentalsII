@@ -3,9 +3,9 @@ from truck_delivery_rayus007.vehicle import Vehicle
 
 class Truck(Vehicle):
     """ Class representing a Truck """
-    def __init__(self, license_plate, typo, model, brand_manufactor):
+    def __init__(self, typo, name, license_plate, model, brand_manufactor):
+        super(Truck, self).__init__(typo, name)
         self.license_plate = license_plate
-        self.typo = typo
         self.model = model
         self.brand_manufactor = brand_manufactor
 
