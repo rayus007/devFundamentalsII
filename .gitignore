@@ -1,1 +1,12 @@
-.idea
+build/
+dist/
+.idea/
+
+.pytest_cache/
+
+.tox/
+
+truck_delivery.egg-info/
+truck_delivery_rayus007.egg-info/
+
+*.pyc
