@@ -1,0 +1,194 @@
+openapi: 3.0.0
+info:
+  title: Truck Delivery API
+  description: Truck delivery project used to approve Development Fundamentals II [GIT repo](https://github.com/rayus007/devFundamentalsII).
+  version: 0.0.1
+servers:
+  - url: http://192.168.31.96:5000/api/v1/
+    description: local server, e.g. Main (local) server
+tags:
+- name: "Truck"
+  description: "Everything about Trucks"
+- name: "Driver"
+  description: "Everything about Drivers"
+paths:
+  /trucks:
+    get:
+      tags:
+      - "Truck"
+      summary: "Returns a list of trucks."
+      responses:
+        "200":
+          description: "A JSON array of trucks."
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    color:
+                      type: "string"
+                    id:
+                      type: "integer"
+                    plate:
+                      type: "string"
+    post:
+      tags:
+        - "Truck"
+      summary: "Adds a new truck in the Trucks dictionary."
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Test"
+          required: true
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                color:
+                  type: "string"
+                id:
+                  type: "integer"
+                plate:
+                  type: "string"
+      responses:
+        "200":
+          description: "A success message."
+
+  /trucks/truck_id:
+    get:
+      tags:
+        - "Truck"
+      summary: "Returns a truck based on the Id."
+      responses:
+        "200":
+          description: "A JSON array of a truck."
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    color:
+                       type: "string"
+                    id:
+                      type: "integer"
+                    plate:
+                      type: "string"
+    delete:
+      tags:
+        - "Truck"
+      summary: "Deletes an existing truck from the Trucks dictionary."
+      responses:
+        "200":
+          description: "A success message."
+
+  /drivers:
+    get:
+      tags:
+        - "Driver"
+      summary: "Returns a list of drivers."
+      responses:
+        "200":
+          description: "A JSON array of drivers."
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: "string"
+                    last_name:
+                      type: "string"
+                    id:
+                      type: "integer"
+                    license_number:
+                      type: "string"
+                    trunk_id:
+                      type: "integer"
+    post:
+      tags:
+        - "Driver"
+      summary: "Adds a new driver in the Trucks dictionary."
+      parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                name:
+                  type: "string"
+                last_name:
+                  type: "string"
+                id:
+                  type: "integer"
+                license_number:
+                  type: "string"
+                trunk_id:
+                  type: "integer"
+      responses:
+        "200":
+          description: "A success message."
+
+  /drivers/driver_id:
+    get:
+      tags:
+        - "Driver"
+      summary: "Returns a driver based on the Id."
+      responses:
+        "200":
+          description: "A JSON array of a driver."
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: "string"
+                    last_name:
+                      type: "string"
+                    id:
+                      type: "integer"
+                    license_number:
+                      type: "string"
+                    trunk_id:
+                      type: "integer"
+    delete:
+      tags:
+        - "Driver"
+      summary: "Deletes an existing driver from the Drivers dictionary."
+      responses:
+        "200":
+          description: "A success message."
+
+  /drivers/driver_id/truck:
+    get:
+      tags:
+        - "Driver"
+      summary: "Gets the trunk associated to the Driver."
+      responses:
+        "200":
+          description: "A JSON array of trucks."
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    color:
+                      type: "string"
+                    id:
+                      type: "integer"
+                    plate:
+                      type: "string"
