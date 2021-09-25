@@ -1,0 +1,147 @@
+swagger: "2.0"
+info:
+  title: Truck Delivery API
+  description: Truck delivery project used to approve Development Fundamentals II [GIT repo](https://github.com/rayus007/devFundamentalsII).
+  version: 0.0.1
+host: 192.168.31.96:5000
+basePath: "/api/v1"
+tags:
+- name: "Trucks"
+  description: "Everything about Trucks"
+- name: "Drivers"
+  description: "Everything about Drivers"
+schemes:
+  - http
+paths:
+  /trucks:
+    get:
+      tags:
+      - "Trucks"
+      summary: Returns a list of trucks.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: A JSON array of trucks.
+          schema:
+            type: array
+            $ref: '#/definitions/Truck'
+    post:
+      tags:
+      - "Trucks"
+      summary: Adds a new truck in the Trucks dictionary.
+      parameters:
+        - in: "body"
+          name: "body"
+          description: JSON used to save truck in the Trucks dictionary.
+          required: true
+          schema:
+            $ref: "#/definitions/Truck"
+      produces:
+        - application/json
+      responses:
+        200:
+          description: A success message.
+  /trucks/truck_id:
+    get:
+      tags:
+      - "Trucks"
+      summary: "Returns a truck based on the Id."
+      responses:
+        "200":
+          description: "A JSON array of a truck."
+          schema:
+            type: array
+            $ref: '#/definitions/Truck'
+    delete:
+      tags:
+      - "Trucks"
+      summary: "Deletes an existing truck from the Trucks dictionary."
+      responses:
+        "200":
+          description: A success message.
+
+  /drivers:
+    get:
+      tags:
+        - "Drivers"
+      summary: Returns a list of drivers.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: A JSON array of drivers.
+          schema:
+            type: array
+            $ref: '#/definitions/Driver'
+    post:
+      tags:
+        - "Drivers"
+      summary: Adds a new driver in the Drivers dictionary.
+      parameters:
+        - in: "body"
+          name: "body"
+          description: JSON used to save driver in the Drivers dictionary.
+          required: true
+          schema:
+            $ref: "#/definitions/Driver"
+      produces:
+        - application/json
+      responses:
+        200:
+          description: A success message.
+  /drivers/driver_id:
+    get:
+      tags:
+        - "Drivers"
+      summary: "Returns a driver based on the Id."
+      responses:
+        "200":
+          description: "A JSON array of a driver."
+          schema:
+            type: array
+            $ref: '#/definitions/Driver'
+    delete:
+      tags:
+        - "Drivers"
+      summary: "Deletes an existing driver from the Drivers dictionary."
+      responses:
+        "200":
+          description: A success message.
+
+  /drivers/driver_id/truck:
+    get:
+      tags:
+        - "Drivers"
+      summary: "Gets the trunk associated to the Driver."
+      responses:
+        "200":
+          description: "A JSON array of the associated truck."
+          schema:
+            type: array
+            $ref: '#/definitions/Truck'
+
+
+definitions:
+  Truck:
+    type: object
+    properties:
+      color:
+        type: "string"
+      id:
+        type: "integer"
+      plate:
+        type: "string"
+  Driver:
+    type: object
+    properties:
+      name:
+        type: "string"
+      last_name:
+        type: "string"
+      id:
+        type: "integer"
+      license_number:
+        type: "string"
+      trunk_id:
+        type: "integer"
