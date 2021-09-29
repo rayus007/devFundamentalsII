@@ -1,0 +1,10 @@
+db_connection:
+  host: "localhost"
+  port: 7254
+  db: 0
+  user: redis
+  password: "password"
+
+log_level: 10
+log_enable_file : true
+
