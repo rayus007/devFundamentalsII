@@ -24,8 +24,8 @@ jobs:
 
       - name: Install dependencies
         run:
-          pip install -r /Task_12/dev_requirements.txt
-          pip install -r /Task_12/requirements.txt
+          pip install -r Task_12/dev_requirements.txt
+          pip install -r Task_12/requirements.txt
           pip install -r coveralls
 
       - name: Run tests
