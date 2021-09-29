@@ -5,7 +5,7 @@ on:
         - develop
 
 jobs:
-  test-rg:
+  test:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
