@@ -12,10 +12,7 @@ def list_clients():
     """
     connector = ClientManager()
     result = connector.get_all()
-    if result:
-        return jsonify(result)
-    else:
-        return jsonify({"message": "Clients Not found"}), 500
+    return jsonify(result)
 
 
 def save_client():

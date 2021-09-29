@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, request
 from api.views import client_api, truck_api, driver_api
-from truck_delivery_rayus007.util.custom_exceptions import CustomException, DataNotAvailableException
 
 app = Flask(__name__)
 API_NAME = "/api/v1"

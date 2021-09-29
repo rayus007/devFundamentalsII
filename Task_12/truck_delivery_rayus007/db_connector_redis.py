@@ -51,7 +51,6 @@ class DbConnectorRedis(DBConnector):
             return list_objs
         except ConnectionError as conn_error:
             raise ConnectionError(f"Error given: {conn_error}")
-            return list_objs
 
     def delete_by_id(self, id):
         self.get_connection().delete(id)
